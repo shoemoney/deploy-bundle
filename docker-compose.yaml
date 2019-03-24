@@ -1,0 +1,89 @@
+version: "3"
+
+networks:
+  main-net:
+
+volumes:
+  dbdata:
+
+services:
+  traefik-proxy:
+    image: traefik
+    container_name: "traefik-proxy"
+    command: --api --docker  # Enables the web UI and tells Træfik to listen to docker
+    environment:
+      - "DO_AUTH_TOKEN=${DOTOKEN}"
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - main-net
+    restart: always
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./traefik/traefik.toml:/traefik.toml"
+      - "./traefik/acme.json:/acme.json"
+    labels:
+      - traefik.backend=traefik-proxy
+      - traefik.frontend.rule=Host:traefik.${COREDOMAIN}
+      - traefik.port=8080
+      - traefik.frontend.priority=100
+
+  nginx-main:
+    image: nginx:latest
+    container_name: "nginx-main"
+    networks:
+      - main-net
+    depends_on:
+      - traefik-proxy
+    restart: always
+    volumes:
+      - "./nginx/content:/usr/share/nginx/html"
+      - "./nginx/config/default.conf:/etc/nginx/conf.d/default.conf"
+      - "/etc/letsencrypt/:/etc/letsencrypt/"
+    labels:
+      - traefik.backend=nginx-main
+      - traefik.frontend.rule=HostRegexp:${COREDOMAIN}, {subdomain:[a-z0-9]+}.${COREDOMAIN}
+      - traefik.port=80
+      - traefik.frontend.priority=2
+
+  db-main:
+    image: postgres:latest
+    container_name: "db-main"
+    restart: always
+    networks:
+      - main-net
+    environment:
+      POSTGRES_PASSWORD: '${DBPW}'
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+    labels:
+      - traefik.backend=db-main
+
+  api-nodejs:
+    image: node:latest
+    container_name: "api-nodejs"
+    restart: always
+    command: ["node", "index"]
+    environment: 
+      NODE_ENV: ${RUN_ENV}
+      MUST_MATCH: ${MUST_MATCH}
+      IS_PROD: ${IS_PROD}
+      PROD_PORT: ${API_PORT}
+      PGHOST: 'db-main'
+      PGDATABASE: 'postgres'
+      PGUSER: 'postgres'
+      PGPASSWORD: '${DBPW}'
+    working_dir: /home/app
+    networks:
+      - main-net
+    depends_on:
+      - traefik-proxy
+      - db-main
+    volumes:
+      - "./api-nodejs:/home/app"
+    labels:
+      - traefik.backend=api-nodejs
+      - traefik.frontend.rule=Host:api.${COREDOMAIN}
+      - traefik.port=${API_PORT}
+      - traefik.frontend.priority=10

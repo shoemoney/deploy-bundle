@@ -1,0 +1,9 @@
+# DIRECTORIES
+node_modules/
+notes/
+2prod/
+dev-pg/
+scratch/
+
+# FILES
+.env
