@@ -20,6 +20,6 @@ entryPoint = "https"
   delayBeforeCheck = 0
 
 [[acme.domains]]
-  main = "*.findyour.agency"
-  sans = ["findyour.agency"]
+  main = "*.devhangout.space"
+  sans = ["devhangout.space"]
 
