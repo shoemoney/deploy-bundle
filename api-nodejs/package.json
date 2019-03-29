@@ -1,43 +1,42 @@
 {
-	"name": "devhangout-core",
-	"version": "1.0.0",
-	"description": "API Core for the Developer Hangout site",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon ./index.js",
-		"start": "node ./index.js",
-		"rebuild": "npm i && node ./index.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/developerhangout/deploybundle.git"
-	},
-	"keywords": [
-		"Suggestion Tracking",
-		"Staff Records",
-		"Project Tracking"
-	],
-	"author": "Erin Rivas",
-	"contributors": [
-		{
-			"name": "Erin Rivas",
-			"email": "erin@atomicbear.com",
-			"url": "https://github.com/karnthis/"
-		}
-	],
-	"license": "MIT",
-	"dependencies": {
-		"argon2": "^0.21.0",
-		"cors": "^2.8.5",
-		"express": "^4.16.4",
-		"express-promise-router": "^3.0.3",
-		"express-validator": "^5.3.1",
-		"passport": "^0.4.0",
-		"passport-http-bearer": "^1.0.1",
-		"pg": "^7.7.1"
-	},
-	"devDependencies": {
-		"nodemon": "^1.18.9"
-	}
+    "name": "devhangout-core",
+    "version": "1.0.0",
+    "description": "API Core for the Developer Hangout site",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint ./**/*.js --fix",
+        "dev": "nodemon ./index.js",
+        "start": "node ./index.js",
+        "rebuild": "npm i && node ./index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/developerhangout/deploybundle.git"
+    },
+    "keywords": [
+        "Suggestion Tracking",
+        "Staff Records",
+        "Project Tracking"
+    ],
+    "author": "Erin Rivas",
+    "contributors": [{
+        "name": "Erin Rivas",
+        "email": "erin@atomicbear.com",
+        "url": "https://github.com/karnthis/"
+    }],
+    "license": "MIT",
+    "dependencies": {
+        "argon2": "^0.21.0",
+        "cors": "^2.8.5",
+        "express": "^4.16.4",
+        "express-promise-router": "^3.0.3",
+        "express-validator": "^5.3.1",
+        "passport": "^0.4.0",
+        "passport-http-bearer": "^1.0.1",
+        "pg": "^7.7.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.9"
+    }
 }
