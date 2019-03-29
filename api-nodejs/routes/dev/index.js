@@ -16,6 +16,4 @@ expRtr.route("/:cmd")
   .post(cmdPost.validate, cmdPost.func)
   .put(NotSupp);
 
-module.exports = (app) => {
-  app.use("/dev", expRtr);
-};
+module.exports = expRtr;
