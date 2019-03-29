@@ -1,9 +1,11 @@
+"use strict";
+
 const {
   check,
   validationResult,
 } = require("express-validator/check");
 const DB = require("../../core/db");
-const { minPWLength } = require("../../core/config");
+const { cfg: { minPWLength } } = require("../../config/core");
 
 const tbl = "USERS";
 

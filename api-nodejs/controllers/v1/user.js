@@ -8,7 +8,7 @@ const {
 const Argon2 = require("argon2");
 const ghCrypto = require("../../core/crypto");
 const DB = require("../../core/db");
-const { minPWLength } = require("../../core/config");
+const { cfg: { minPWLength } } = require("../../config/core");
 
 const cols = [
   "user_id", "full_name", "member_of", "email",
