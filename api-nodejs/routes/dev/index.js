@@ -1,17 +1,19 @@
-const Router = require('express-promise-router')
-const { NotSupp } = require('../../controllers/shared/')
-const { rootGet, cmdPost } = require('../../controllers/dev')
+"use strict";
 
-const expRtr = new Router()
+const Router = require("express-promise-router");
+const { NotSupp } = require("../../controllers/shared/");
+const { rootGet, cmdPost } = require("../../controllers/dev");
 
-expRtr.route('/')
-.get(rootGet.func)
-.post(NotSupp)
-.put(NotSupp)
+const expRtr = new Router();
 
-expRtr.route('/:cmd')
-.get(NotSupp)
-.post(cmdPost.validate, cmdPost.func)
-.put(NotSupp)
+expRtr.route("/")
+  .get(rootGet.func)
+  .post(NotSupp)
+  .put(NotSupp);
 
-module.exports = expRtr
+expRtr.route("/:cmd")
+  .get(NotSupp)
+  .post(cmdPost.validate, cmdPost.func)
+  .put(NotSupp);
+
+module.exports = expRtr;

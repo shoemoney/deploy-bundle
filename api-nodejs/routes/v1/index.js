@@ -1,7 +1,9 @@
+"use strict";
 
-// EXPORT
+const users = require("./user");
+const auth = require("./auth");
+
 module.exports = (app) => {
-	// USE ROUTES
-	app.use('/users', require('./user'))
-	app.use('/auth', require('./auth'))
-}
+  app.use("/users", users);
+  app.use("/auth", auth);
+};

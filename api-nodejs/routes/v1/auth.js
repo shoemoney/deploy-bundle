@@ -1,15 +1,16 @@
-const expRtr = new require('express-promise-router')()
-const {
-	NotSupp
-} = require('../../controllers/shared/')
-const {
-	rootPost
-} = require('../../controllers/v1/auth')
+"use strict";
 
-expRtr.route('/')
-	.get(NotSupp)
-	.post(rootPost.func)
-	.put(NotSupp)
+const expRtr = require("express-promise-router")();
+const {
+  NotSupp,
+} = require("../../controllers/shared/");
+const {
+  rootPost,
+} = require("../../controllers/v1/auth");
 
-// EXPORT ROUTES
-module.exports = expRtr
+expRtr.route("/")
+  .get(NotSupp)
+  .post(rootPost.func)
+  .put(NotSupp);
+
+module.exports = expRtr;

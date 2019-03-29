@@ -1,7 +1,7 @@
-
-
-
+"use strict";
 
 module.exports = {
-	NotSupp: (req, res) => {res.status(403).send('Not Supported')},
-}
+  NotSupp: (req, res) => {
+    res.status(403).send("Not Supported");
+  },
+};
