@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub contributors](https://img.shields.io/github/contributors/developerhangout/deploy-bundle.svg) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/developerhangout/deploy-bundle.svg)
+
 # Developer Hangout App
 ## Version: 1.0.1
 
