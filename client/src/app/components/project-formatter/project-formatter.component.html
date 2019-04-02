@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="card">
+    <form [formGroup]="formatterForm" class="grid-container grid-container--form-inputs" (submit)="submit($event)">
+      <label>
+        Discord User Id:
+      </label>
+      <input name="discordUserId" type="text" formControlName="userId" placeholder="Discord User Id">
+      <label>
+        Project Name:
+      </label>
+      <input type="text" formControlName="projName" placeholder="Project Name">
+
+      <label>
+        Short Project Description:
+      </label>
+      <textarea rows="5" formControlName="desc" placeholder="Short Project Description"></textarea>
+
+      <label>
+        Source Url:
+      </label>
+      <input type="text" formControlName="sourceUrl" placeholder="Source URL">
+
+      <label>
+        Demo URL:
+      </label>
+        <input type="text" formControlName="demoUrl" placeholder="Demo URL">
+
+      <label>Stack: </label>
+      <div class="grid-container grid-container--checkbox">
+        <ng-container *ngFor="let s of stackOptions.controls; let i = index;">
+          <label formArrayName="stack">
+            <input type="checkbox" [formControlName]="i">
+            {{ stackValues[i] }}
+          </label>
+        </ng-container>
+      </div>
+    </form>
+    <button [disabled]="!formatterForm.valid" (click)="formatProject()">Format!</button>
+    <textarea *ngIf="output" name="output" rows="10" [(ngModel)]="output"></textarea>
+  </div>
+</div>
