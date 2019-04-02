@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ProjectFormatterComponent } from './components/project-formatter/project-formatter.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
     ProjectFormatterComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -71,8 +71,8 @@ export class ProjectFormatterComponent implements OnInit {
       formatedOutput[1] = this._convertStacks(this.formatterForm.get('stack').value);
       formatedOutput[2] = this.formatterForm.get('projName').value;
       formatedOutput[3] = ` \`\`\` \n${this.formatterForm.get('desc').value} \n\`\`\``;
-      formatedOutput[4] = `Live Demo: ${this.formatterForm.get('demoUrl').value}`
-      formatedOutput[5] = `Source Url: ${this.formatterForm.get('sourceUrl').value}`;
+      formatedOutput[4] = `Live Demo: <${this.formatterForm.get('demoUrl').value}>`;
+      formatedOutput[5] = `Source Url: <${this.formatterForm.get('sourceUrl').value}>`;
 
       this.output = formatedOutput.join('\n')
 
